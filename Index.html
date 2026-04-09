@@ -4,412 +4,744 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KT Fine Living – Immobilien zum Wohlfühlen</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ===================== VARIABLEN ===================== */
-:root {
-  --navy:    #1a2d4a;
-  --navy-l:  #243d62;
-  --sage:    #8fa89a;
-  --sage-l:  #c4d4cc;
-  --sage-ll: #e8efec;
-  --cream:   #f8f6f2;
-  --warm:    #f0ece4;
-  --white:   #ffffff;
-  --text:    #1a2d4a;
-  --text-m:  #4a5a6a;
-  --text-d:  #8a9aaa;
-  --gold:    #b8975a;
-}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
-img{display:block;max-width:100%;}
-a{text-decoration:none;color:inherit;}
-::-webkit-scrollbar{width:5px;}
-::-webkit-scrollbar-track{background:var(--cream);}
-::-webkit-scrollbar-thumb{background:var(--sage);border-radius:3px;}
 
-/* ===================== NAV ===================== */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  background:rgba(255,255,255,.97);backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--sage-ll);
-  padding:0 5%;
-  display:flex;justify-content:space-between;align-items:center;
-  height:72px;transition:box-shadow .3s;
+/* =============================================
+   DESIGN-SYSTEM
+   Navy #1a2d4a · Sage #8fa89a · Cream #f7f4ef · Gold #b89b6a
+   Cormorant Garamond (Display) + Jost (Body)
+   ============================================= */
+:root {
+  --navy:      #1a2d4a;
+  --navy-l:    #253f60;
+  --navy-xl:   #0f1d30;
+  --sage:      #8fa89a;
+  --sage-l:    #bdd0c8;
+  --sage-ll:   #e6efec;
+  --sage-lll:  #f0f5f3;
+  --cream:     #f7f4ef;
+  --cream-d:   #ede9e2;
+  --gold:      #b89b6a;
+  --gold-l:    #d4b98a;
+  --white:     #ffffff;
+  --text:      #1a2d4a;
+  --text-m:    #4a5a6a;
+  --text-d:    #8a9aaa;
 }
-nav.shadow{box-shadow:0 4px 24px rgba(26,45,74,.08);}
-.nav-logo{
-  height:44px;width:140px;background:var(--sage-ll);
-  border:1.5px dashed var(--sage);border-radius:6px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'DM Sans',sans-serif;font-size:.52rem;font-weight:600;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--sage);
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; font-size:16px; }
+body {
+  font-family:'Jost', sans-serif;
+  background:var(--white);
+  color:var(--text);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img { display:block; max-width:100%; }
+a { text-decoration:none; color:inherit; }
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--cream); }
+::-webkit-scrollbar-thumb { background:var(--sage); border-radius:2px; }
+
+/* =============================================
+   NAVIGATION – ultra slim, luxury
+   ============================================= */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:600;
+  height:68px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 5%;
+  transition:background .5s, box-shadow .5s;
+}
+nav.solid {
+  background:rgba(247,244,239,.97);
+  backdrop-filter:blur(20px);
+  box-shadow:0 1px 0 var(--cream-d);
+}
+.nav-logo {
+  height:42px; width:136px;
+  background:rgba(255,255,255,.2);
+  border:1px dashed rgba(143,168,154,.5);
+  border-radius:4px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Jost',sans-serif; font-size:.5rem; font-weight:500;
+  letter-spacing:.2em; text-transform:uppercase; color:rgba(143,168,154,.8);
   transition:background .2s;
 }
-.nav-logo:hover{background:var(--sage-l);}
-.nav-logo img{height:100%;width:100%;object-fit:contain;border-radius:5px;}
-.nav-links{display:flex;gap:32px;list-style:none;}
-.nav-links a{
-  font-size:.82rem;font-weight:500;color:var(--text-m);
-  transition:color .2s;position:relative;padding-bottom:3px;
-}
-.nav-links a::after{
-  content:'';position:absolute;bottom:0;left:0;
-  width:0;height:1.5px;background:var(--navy);transition:width .25s;
-}
-.nav-links a:hover,.nav-links a.active{color:var(--navy);}
-.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
-.nav-right{display:flex;align-items:center;gap:16px;}
-.nav-tel{font-size:.79rem;font-weight:400;color:var(--text-m);}
-.nav-cta{
-  font-size:.78rem;font-weight:600;color:var(--white);
-  background:var(--navy);padding:9px 20px;border-radius:100px;
-  transition:background .25s,box-shadow .25s;
-}
-.nav-cta:hover{background:var(--navy-l);box-shadow:0 4px 18px rgba(26,45,74,.28);}
-.nav-mob{display:none;background:none;border:none;cursor:pointer;padding:6px;flex-direction:column;gap:5px;}
-.nav-mob span{display:block;width:22px;height:1.5px;background:var(--navy);transition:all .3s;}
+.nav-logo:hover { background:rgba(143,168,154,.12); }
+.nav-logo img { height:100%; width:100%; object-fit:contain; border-radius:3px; }
 
-/* Mobile Nav Overlay */
-.mobile-menu{
-  display:none;position:fixed;inset:0;z-index:490;
-  background:rgba(255,255,255,.98);backdrop-filter:blur(16px);
-  flex-direction:column;align-items:center;justify-content:center;gap:32px;
-  padding-top:72px;
+.nav-links { display:flex; gap:36px; list-style:none; align-items:center; }
+.nav-links a {
+  font-size:.72rem; font-weight:500; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--text-m);
+  transition:color .25s; position:relative; padding-bottom:2px;
 }
-.mobile-menu.open{display:flex;}
-.mobile-menu a{
+.nav-links a::after {
+  content:''; position:absolute; bottom:0; left:0;
+  width:0; height:1px; background:var(--navy); transition:width .3s;
+}
+.nav-links a:hover, .nav-links a.active { color:var(--navy); }
+.nav-links a:hover::after, .nav-links a.active::after { width:100%; }
+
+.nav-right { display:flex; align-items:center; gap:20px; }
+.nav-tel {
+  font-size:.72rem; font-weight:400; letter-spacing:.06em;
+  color:var(--text-m); display:flex; align-items:center; gap:6px;
+}
+.nav-divider { width:1px; height:18px; background:var(--cream-d); }
+.nav-cta {
+  font-size:.72rem; font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--white); background:var(--navy);
+  padding:9px 22px; border-radius:2px;
+  transition:background .25s;
+}
+.nav-cta:hover { background:var(--navy-l); }
+
+.nav-mob { display:none; background:none; border:none; cursor:pointer; flex-direction:column; gap:5px; padding:4px; }
+.nav-mob span { display:block; width:20px; height:1px; background:var(--navy); transition:all .3s; }
+.mob-overlay {
+  display:none; position:fixed; inset:0; z-index:590;
+  background:rgba(247,244,239,.98); backdrop-filter:blur(20px);
+  flex-direction:column; align-items:center; justify-content:center; gap:32px;
+}
+.mob-overlay.open { display:flex; }
+.mob-overlay a {
   font-family:'Cormorant Garamond',serif;
-  font-size:2rem;font-weight:300;color:var(--navy);
+  font-size:2.4rem; font-weight:300; color:var(--navy); letter-spacing:.04em;
+  transition:color .2s;
+}
+.mob-overlay a:hover { color:var(--sage); }
+
+/* =============================================
+   HERO – vollbild, editorial
+   ============================================= */
+#hero {
+  height:100vh; min-height:640px;
+  display:grid; grid-template-columns:1fr 1fr;
+  position:relative; overflow:hidden;
 }
 
-/* ===================== HERO ===================== */
-#hero{
-  margin-top:72px;
-  position:relative;
-  height:calc(100vh - 72px);min-height:580px;
-  overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;
+/* Linke Seite – Content auf Creme */
+.hero-left {
+  background:var(--cream);
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding:0 7% 72px;
+  position:relative; z-index:2;
+  overflow:hidden;
 }
-.hero-bg{
-  position:absolute;inset:0;z-index:0;
-  background:linear-gradient(135deg,#2a4060,#1a2d4a 60%,#3a5570);
-  display:flex;align-items:center;justify-content:center;
-  flex-direction:column;gap:8px;
-}
-.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;}
-.hero-bg-ph-icon{font-size:5rem;opacity:.12;z-index:1;}
-.hero-bg-ph-txt{font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.2);z-index:1;}
-.hero-overlay{
-  position:absolute;inset:0;z-index:1;
-  background:linear-gradient(to top,rgba(26,45,74,.9) 0%,rgba(26,45,74,.45) 50%,rgba(26,45,74,.08) 100%);
-}
-.hero-content{
-  position:relative;z-index:2;padding:0 5% 56px;max-width:820px;
-}
-.hero-sup{
-  font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--sage-l);margin-bottom:14px;
-  display:flex;align-items:center;gap:10px;
-  opacity:0;animation:fadeUp .7s .2s forwards;
-}
-.hero-sup::before{content:'';width:24px;height:1px;background:var(--sage-l);}
-.hero-h1{
+/* Große dekorative Zahl */
+.hero-deco-num {
+  position:absolute; top:-2%; left:-4%;
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2.8rem,5.5vw,5.2rem);font-weight:300;line-height:1.18;
-  color:var(--white);margin-bottom:20px;
-  opacity:0;animation:fadeUp .8s .4s forwards;
+  font-size:22rem; font-weight:300; line-height:1;
+  color:rgba(26,45,74,.04); pointer-events:none; user-select:none;
+  animation:numDrift 20s ease-in-out infinite alternate;
 }
-.hero-h1 em{font-style:italic;color:var(--sage-l);}
-.hero-p{
-  font-size:.98rem;font-weight:300;line-height:1.8;
-  color:rgba(255,255,255,.68);max-width:500px;margin-bottom:36px;
-  opacity:0;animation:fadeUp .8s .6s forwards;
+@keyframes numDrift {
+  from { transform:translateY(0); }
+  to   { transform:translateY(-20px); }
 }
-.hero-btns{
-  display:flex;gap:14px;flex-wrap:wrap;
-  opacity:0;animation:fadeUp .8s .8s forwards;
+/* Vertikale Beschriftung links */
+.hero-vert-label {
+  position:absolute; left:24px; bottom:50%;
+  transform:rotate(-90deg) translateX(-50%);
+  transform-origin:left bottom;
+  font-size:.58rem; font-weight:500; letter-spacing:.28em;
+  text-transform:uppercase; color:var(--sage);
+  white-space:nowrap;
 }
-.btn-white{
-  display:inline-flex;align-items:center;gap:9px;
-  background:var(--white);color:var(--navy);
-  font-size:.84rem;font-weight:600;
-  padding:13px 26px;border-radius:100px;
-  box-shadow:0 4px 16px rgba(0,0,0,.15);
-  transition:all .25s;
+.hero-eyebrow {
+  font-size:.66rem; font-weight:500; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom:20px; display:flex; align-items:center; gap:12px;
+  opacity:0; animation:fadeUp .7s .4s forwards;
 }
-.btn-white:hover{background:var(--cream);box-shadow:0 6px 24px rgba(0,0,0,.22);}
-.btn-ghost-w{
-  display:inline-flex;align-items:center;gap:9px;
-  background:transparent;color:var(--white);
-  border:1.5px solid rgba(255,255,255,.4);
-  font-size:.84rem;font-weight:400;
-  padding:13px 26px;border-radius:100px;
-  transition:all .25s;
+.hero-eyebrow::before { content:''; width:28px; height:1px; background:var(--gold); }
+.hero-h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.2rem,5.5vw,5.8rem); font-weight:300;
+  line-height:1.1; letter-spacing:-.01em;
+  color:var(--navy); margin-bottom:28px;
+  opacity:0; animation:fadeUp .9s .6s forwards;
 }
-.btn-ghost-w:hover{border-color:var(--white);background:rgba(255,255,255,.1);}
+.hero-h1 em { font-style:italic; color:var(--sage); }
+.hero-p {
+  font-size:.9rem; font-weight:300; line-height:1.88; letter-spacing:.02em;
+  color:var(--text-m); max-width:400px; margin-bottom:40px;
+  opacity:0; animation:fadeUp .8s .8s forwards;
+}
+.hero-actions {
+  display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+  opacity:0; animation:fadeUp .8s 1s forwards;
+}
+.btn-primary {
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--navy); color:var(--white);
+  font-size:.72rem; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
+  padding:14px 32px; border-radius:2px;
+  transition:background .25s, box-shadow .25s;
+  box-shadow:0 4px 20px rgba(26,45,74,.22);
+}
+.btn-primary:hover { background:var(--navy-l); box-shadow:0 6px 28px rgba(26,45,74,.32); }
+.btn-link {
+  font-size:.72rem; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--navy); display:flex; align-items:center; gap:8px;
+  transition:gap .25s;
+}
+.btn-link::after { content:'→'; font-size:.9rem; }
+.btn-link:hover { gap:14px; }
 
-/* SUCHLEISTE */
-.hero-search{
-  position:absolute;bottom:0;left:0;right:0;z-index:3;
-  transform:translateY(50%);padding:0 5%;
+/* Hero Stats */
+.hero-stats {
+  display:flex; gap:0; margin-top:52px;
+  border-top:1px solid var(--cream-d); padding-top:28px;
+  opacity:0; animation:fadeUp .7s 1.2s forwards;
 }
-.search-box{
-  background:var(--white);border-radius:16px;
-  box-shadow:0 8px 48px rgba(26,45,74,.18);
-  padding:26px 28px;
-  display:grid;grid-template-columns:1fr 1fr 1fr auto;
-  gap:16px;align-items:end;
-  max-width:1100px;
+.hstat { flex:1; padding-right:24px; }
+.hstat + .hstat { padding-left:24px; border-left:1px solid var(--cream-d); }
+.hstat-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem; font-weight:400; color:var(--navy); line-height:1;
+  margin-bottom:4px;
 }
-.sf-g{display:flex;flex-direction:column;gap:6px;}
-.sf-lbl{
-  font-size:.62rem;font-weight:600;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--text-d);
+.hstat-lbl {
+  font-size:.62rem; font-weight:500; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--text-d);
 }
-.sf-inp,.sf-sel{
-  background:var(--cream);border:1px solid var(--sage-ll);
-  border-radius:8px;color:var(--text);padding:11px 14px;
-  font-family:'DM Sans',sans-serif;font-size:.88rem;
-  outline:none;width:100%;cursor:auto;
-  transition:border-color .25s;
+
+/* Rechte Seite – Foto */
+.hero-right {
+  position:relative; overflow:hidden;
+  background:var(--navy);
+}
+.hero-img {
+  position:absolute; inset:0;
+  background:linear-gradient(160deg,#2a4060 0%,#1a2d4a 100%);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:10px;
+}
+.hero-img img {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center;
+  opacity:.75;
+}
+.hero-img-ph { font-size:5rem; opacity:.1; z-index:1; }
+.hero-img-txt {
+  font-size:.6rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase;
+  color:rgba(255,255,255,.2); z-index:1;
+}
+/* Sage-Balken rechts */
+.hero-img::after {
+  content:''; position:absolute; top:10%; bottom:10%; right:0;
+  width:4px; background:var(--sage); opacity:.6;
+}
+/* Overlay Verlauf auf Foto */
+.hero-img-ov {
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(to right, rgba(26,45,74,.15) 0%, transparent 100%);
+}
+/* Schwebende Karte über dem Foto */
+.hero-float-card {
+  position:absolute; bottom:60px; left:-44px; z-index:3;
+  background:var(--white);
+  padding:22px 26px; width:220px;
+  box-shadow:0 12px 48px rgba(26,45,74,.18);
+  animation:cardFloat 6s ease-in-out infinite alternate;
+  opacity:0; animation:cardIn .8s 1.4s forwards, cardFloat 6s 2.2s ease-in-out infinite alternate;
+}
+@keyframes cardIn {
+  from { opacity:0; transform:translateY(16px); }
+  to   { opacity:1; transform:none; }
+}
+@keyframes cardFloat {
+  from { transform:translateY(0); }
+  to   { transform:translateY(-8px); }
+}
+.card-label {
+  font-size:.58rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--sage); margin-bottom:6px;
+}
+.card-value {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem; font-weight:400; color:var(--navy); line-height:1.2;
+  margin-bottom:4px;
+}
+.card-sub { font-size:.72rem; font-weight:300; color:var(--text-m); }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(16px); }
+  to   { opacity:1; transform:none; }
+}
+
+/* =============================================
+   SUCHLEISTE – elegant, eingebettet
+   ============================================= */
+#suche {
+  background:var(--navy);
+  padding:0;
+}
+.suche-inner {
+  display:grid; grid-template-columns:1fr 1fr 1fr 1fr auto;
+  gap:0; align-items:stretch;
+  max-width:100%;
+}
+.sf-block {
+  padding:28px 32px;
+  border-right:1px solid rgba(255,255,255,.08);
+  display:flex; flex-direction:column; gap:8px;
+  transition:background .2s;
+}
+.sf-block:hover { background:rgba(255,255,255,.04); }
+.sf-block:last-child { border-right:none; }
+.sf-lbl {
+  font-size:.58rem; font-weight:500; letter-spacing:.18em;
+  text-transform:uppercase; color:rgba(255,255,255,.4);
+}
+.sf-inp, .sf-sel {
+  background:transparent; border:none;
+  color:var(--white); font-family:'Jost',sans-serif;
+  font-size:.9rem; font-weight:300; outline:none;
+  width:100%; cursor:auto; padding:0;
   -webkit-appearance:none;
 }
-.sf-inp::placeholder{color:var(--text-d);}
-.sf-inp:focus,.sf-sel:focus{border-color:var(--navy);}
-.sf-btn{
-  background:var(--navy);color:var(--white);border:none;
-  padding:12px 24px;border-radius:8px;
-  font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:600;
-  cursor:pointer;white-space:nowrap;
-  display:flex;align-items:center;gap:8px;
-  transition:background .25s,box-shadow .25s;
-  height:46px;
+.sf-inp::placeholder { color:rgba(255,255,255,.55); }
+.sf-sel { cursor:pointer; }
+.sf-sel option { background:var(--navy-xl); color:var(--white); }
+.sf-btn-block {
+  background:var(--gold);
+  padding:28px 40px;
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  cursor:pointer; border:none; font-family:'Jost',sans-serif;
+  font-size:.72rem; font-weight:500; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--white);
+  transition:background .25s;
+  white-space:nowrap;
 }
-.sf-btn:hover{background:var(--navy-l);box-shadow:0 4px 16px rgba(26,45,74,.3);}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+.sf-btn-block:hover { background:var(--gold-l); }
 
-/* ===================== SECTION COMMONS ===================== */
-section{padding:88px 5%;position:relative;}
-.s-sup{
-  font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--sage);margin-bottom:10px;
-  display:flex;align-items:center;gap:10px;
+/* =============================================
+   KATEGORIEN – editorial 3-spaltig
+   ============================================= */
+#kategorien {
+  background:var(--cream);
+  padding:96px 5%;
 }
-.s-sup::before{content:'';width:20px;height:1px;background:var(--sage);flex-shrink:0;}
-.s-title{
+.kat-header {
+  display:flex; justify-content:space-between; align-items:flex-end;
+  margin-bottom:56px;
+}
+.sec-eyebrow {
+  font-size:.62rem; font-weight:500; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--gold);
+  display:flex; align-items:center; gap:12px; margin-bottom:12px;
+}
+.sec-eyebrow::before { content:''; width:24px; height:1px; background:var(--gold); }
+.sec-title {
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2rem,3.8vw,2.9rem);font-weight:400;line-height:1.25;
-  color:var(--navy);margin-bottom:14px;
+  font-size:clamp(2rem,3.8vw,3.2rem); font-weight:300;
+  color:var(--navy); line-height:1.2;
 }
-.s-title em{font-style:italic;}
-.s-body{font-size:.94rem;font-weight:300;line-height:1.82;color:var(--text-m);}
-.section-hdr{margin-bottom:52px;}
-.section-hdr-row{
-  display:flex;justify-content:space-between;align-items:flex-end;
-  flex-wrap:wrap;gap:16px;margin-bottom:52px;
+.sec-title em { font-style:italic; }
+.kat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+.kat-item {
+  position:relative; overflow:hidden;
+  aspect-ratio:3/4; cursor:pointer; display:block;
+  background:var(--navy);
 }
-.link-all{
-  font-size:.82rem;font-weight:600;color:var(--navy);
-  display:inline-flex;align-items:center;gap:6px;transition:gap .2s;
+.kat-item:hover .kat-bg { transform:scale(1.06); }
+.kat-item:hover .kat-ov { background:rgba(26,45,74,.4); }
+.kat-item:hover .kat-arrow { transform:translate(4px,-4px); }
+.kat-bg {
+  position:absolute; inset:0;
+  background:linear-gradient(160deg,#2a4060,#1a2d4a);
+  transition:transform .6s ease;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
 }
-.link-all::after{content:'→';}
-.link-all:hover{gap:10px;}
+.kat-bg img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.55; }
+.kat-bg-ph { font-size:4rem; opacity:.1; z-index:1; }
+.kat-bg-ph-txt { font-size:.58rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.18); z-index:1; margin-top:8px; }
+.kat-ov {
+  position:absolute; inset:0; z-index:1;
+  background:rgba(26,45,74,.55);
+  transition:background .4s;
+}
+.kat-content {
+  position:absolute; inset:0; z-index:2;
+  padding:32px; display:flex; flex-direction:column; justify-content:flex-end;
+}
+/* Goldene Linie oben */
+.kat-content::before {
+  content:''; position:absolute; top:0; left:32px; right:32px;
+  height:1px; background:rgba(184,155,106,.4);
+}
+.kat-num {
+  font-family:'Cormorant Garamond',serif;
+  font-size:4rem; font-weight:300; color:rgba(255,255,255,.1);
+  line-height:1; margin-bottom:auto;
+}
+.kat-name {
+  font-family:'Cormorant Garamond',serif;
+  font-size:2rem; font-weight:300; color:var(--white);
+  letter-spacing:.03em; margin-bottom:6px;
+}
+.kat-sub {
+  font-size:.66rem; font-weight:500; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--sage-l);
+}
+.kat-arrow {
+  position:absolute; top:28px; right:28px;
+  font-size:1.2rem; color:var(--gold);
+  transition:transform .3s;
+}
 
-/* Reveal */
-.r  {opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s;}
-.r-l{opacity:0;transform:translateX(-22px);transition:opacity .7s,transform .7s;}
-.r-r{opacity:0;transform:translateX(22px);transition:opacity .7s,transform .7s;}
-.r-s{opacity:0;transform:scale(.96);transition:opacity .65s,transform .65s;}
-.r.on,.r-l.on,.r-r.on,.r-s.on{opacity:1;transform:none;}
+/* =============================================
+   ZITAT – sage Fläche
+   ============================================= */
+#zitat {
+  background:var(--sage-ll);
+  padding:80px 5%;
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  text-align:center;
+  position:relative; overflow:hidden;
+}
+#zitat::before {
+  content:'"';
+  position:absolute; top:-40px; left:50%; transform:translateX(-50%);
+  font-family:'Cormorant Garamond',serif;
+  font-size:28rem; font-weight:300; line-height:1;
+  color:rgba(143,168,154,.12); pointer-events:none; user-select:none;
+}
+.zitat-q {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.5rem,3.2vw,2.6rem); font-weight:300; font-style:italic;
+  color:var(--navy); line-height:1.55; max-width:860px;
+  margin-bottom:16px; position:relative; z-index:1;
+}
+.zitat-author {
+  font-size:.65rem; font-weight:500; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--sage); z-index:1;
+}
 
-/* ===================== KATEGORIEN ===================== */
-#kategorien{background:var(--cream);padding-top:128px;}
-.kat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.kat-card{
-  border-radius:16px;overflow:hidden;position:relative;
-  cursor:pointer;transition:transform .35s,box-shadow .35s;aspect-ratio:4/3;
+/* =============================================
+   TOPOBJEKTE – asymmetrisch, premium
+   ============================================= */
+#objekte {
+  background:var(--white);
+  padding:96px 5%;
+}
+.obj-header {
+  display:flex; justify-content:space-between; align-items:flex-end;
+  margin-bottom:56px;
+}
+.obj-grid {
+  display:grid;
+  grid-template-columns:1.35fr 1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:24px;
+}
+/* Hauptobjekt – groß links, überspannt 2 Reihen */
+.obj-featured {
+  grid-row:1/3;
+  border-radius:0;
+  overflow:hidden;
   display:block;
+  position:relative;
+  background:var(--navy);
+  cursor:pointer;
+  transition:box-shadow .3s;
 }
-.kat-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(26,45,74,.16);}
-.kat-card:hover .kat-bg{transform:scale(1.04);}
-.kat-bg{
-  position:absolute;inset:0;background:var(--navy);transition:transform .5s;
-  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;
+.obj-featured:hover { box-shadow:0 16px 56px rgba(26,45,74,.18); }
+.obj-featured:hover .of-img { transform:scale(1.04); }
+.of-img-wrap { height:480px; overflow:hidden; position:relative; background:var(--sage-ll); }
+.of-img {
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .6s ease;
+  display:flex; align-items:center; justify-content:center;
 }
-.kat-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;}
-.kat-bg-icon{font-size:3.5rem;opacity:.13;z-index:1;}
-.kat-bg-ph{font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2);z-index:1;}
-.kat-ov{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(26,45,74,.88) 0%,rgba(26,45,74,.08) 100%);
+.of-img-ph { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; }
+.of-img-ico { font-size:3.5rem; opacity:.18; }
+.of-img-txt { font-size:.58rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--text-d); }
+.of-badge {
+  position:absolute; top:20px; left:20px; z-index:2;
+  background:var(--gold); color:var(--white);
+  font-size:.58rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
+  padding:6px 14px;
 }
-.kat-info{position:absolute;bottom:0;left:0;right:0;padding:28px 22px;z-index:1;}
-.kat-name{
+.of-info {
+  padding:28px 28px 32px;
+  background:var(--cream);
+  border-top:none;
+}
+.of-price {
   font-family:'Cormorant Garamond',serif;
-  font-size:2rem;font-weight:400;color:var(--white);margin-bottom:3px;
+  font-size:1.9rem; font-weight:400; color:var(--navy);
+  margin-bottom:6px;
 }
-.kat-sub{font-size:.72rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--sage-l);}
+.of-title {
+  font-size:.88rem; font-weight:300; line-height:1.6;
+  color:var(--text-m); margin-bottom:14px;
+}
+.of-loc { font-size:.72rem; font-weight:400; letter-spacing:.06em; color:var(--text-d); display:flex; align-items:center; gap:5px; }
+.of-facts { display:flex; gap:16px; margin-top:14px; padding-top:14px; border-top:1px solid var(--cream-d); }
+.of-fact { font-size:.72rem; font-weight:400; color:var(--text-m); display:flex; align-items:center; gap:5px; }
 
-/* ===================== ZITAT ===================== */
-#zitat{background:var(--sage-ll);padding:68px 5%;text-align:center;}
-.zitat-q{
+/* Kleine Objekt-Karten */
+.obj-card {
+  background:var(--white); border:1px solid var(--cream-d);
+  overflow:hidden; display:block; cursor:pointer;
+  transition:transform .3s, box-shadow .3s;
+}
+.obj-card:hover { transform:translateY(-3px); box-shadow:0 10px 36px rgba(26,45,74,.1); }
+.obj-card:hover .oc-img { transform:scale(1.05); }
+.oc-img-wrap { height:190px; overflow:hidden; position:relative; background:var(--sage-ll); }
+.oc-img {
+  width:100%; height:100%; object-fit:cover;
+  transition:transform .5s;
+  display:flex; align-items:center; justify-content:center;
+}
+.oc-img-ph { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:2.5rem; opacity:.18; }
+.oc-img-badge {
+  position:absolute; top:12px; left:12px; z-index:2;
+  background:var(--sage); color:var(--white);
+  font-size:.56rem; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
+  padding:5px 11px;
+}
+.oc-body { padding:20px; }
+.oc-price {
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.5rem,3vw,2.3rem);font-weight:300;font-style:italic;
-  color:var(--navy);line-height:1.55;max-width:780px;margin:0 auto 14px;
+  font-size:1.35rem; font-weight:400; color:var(--navy); margin-bottom:5px;
 }
-.zitat-a{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);}
-
-/* ===================== OBJEKTE ===================== */
-#objekte{background:var(--white);}
-.obj-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px;
-}
-.obj-card{
-  border-radius:16px;overflow:hidden;
-  background:var(--white);border:1px solid var(--sage-ll);
-  box-shadow:0 2px 16px rgba(26,45,74,.06);
-  transition:transform .3s,box-shadow .3s;cursor:pointer;display:block;
-}
-.obj-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(26,45,74,.12);}
-.obj-card:hover .obj-img-inner{transform:scale(1.04);}
-.obj-img{height:230px;overflow:hidden;position:relative;background:var(--sage-ll);}
-.obj-img-inner{
-  position:absolute;inset:0;transition:transform .5s;
-  display:flex;align-items:center;justify-content:center;
-}
-.obj-img-inner img{width:100%;height:100%;object-fit:cover;}
-.obj-ph{font-size:2.5rem;opacity:.2;}
-.obj-badge{
-  position:absolute;top:12px;left:12px;
-  background:var(--navy);color:var(--white);
-  font-size:.6rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
-  padding:5px 12px;border-radius:100px;z-index:1;
-}
-.obj-badge.sold{background:var(--sage);}
-.obj-body{padding:20px 18px;}
-.obj-price{
-  font-family:'Cormorant Garamond',serif;
-  font-size:1.5rem;font-weight:600;color:var(--navy);margin-bottom:5px;
-}
-.obj-title{font-size:.88rem;font-weight:400;color:var(--text);line-height:1.5;margin-bottom:8px;}
-.obj-loc{font-size:.76rem;color:var(--text-d);display:flex;align-items:center;gap:4px;margin-bottom:12px;}
-.obj-facts{
-  display:flex;gap:14px;padding-top:12px;border-top:1px solid var(--sage-ll);
-}
-.obj-fact{font-size:.74rem;color:var(--text-m);display:flex;align-items:center;gap:4px;}
+.oc-title { font-size:.82rem; font-weight:300; color:var(--text-m); line-height:1.5; margin-bottom:8px; }
+.oc-loc { font-size:.7rem; color:var(--text-d); display:flex; align-items:center; gap:4px; }
 
 /* CTA Karte */
-.obj-card-cta{
-  border-radius:16px;background:var(--navy);
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:40px 28px;min-height:340px;text-align:center;
-  transition:background .25s;
+.obj-cta-card {
+  background:var(--navy); padding:32px;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  cursor:pointer; transition:background .3s;
+  position:relative; overflow:hidden;
 }
-.obj-card-cta:hover{background:var(--navy-l);}
-.obj-cta-title{
+.obj-cta-card:hover { background:var(--navy-l); }
+.obj-cta-card::before {
+  content:''; position:absolute; top:0; left:0; right:0;
+  height:1px; background:var(--gold); opacity:.4;
+}
+.cta-title {
   font-family:'Cormorant Garamond',serif;
-  font-size:1.7rem;font-weight:300;color:var(--white);margin-bottom:10px;line-height:1.35;
+  font-size:1.8rem; font-weight:300; color:var(--white);
+  line-height:1.3; margin-bottom:10px;
 }
-.obj-cta-sub{font-size:.78rem;color:var(--sage-l);margin-bottom:24px;}
-.btn-cta-w{
-  background:var(--white);color:var(--navy);
-  padding:11px 26px;border-radius:100px;font-size:.82rem;font-weight:600;
-  transition:background .25s;
+.cta-title em { font-style:italic; color:var(--sage-l); }
+.cta-sub { font-size:.75rem; font-weight:300; color:rgba(255,255,255,.5); margin-bottom:24px; }
+.cta-btn {
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid rgba(255,255,255,.25); color:var(--white);
+  font-size:.68rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
+  padding:10px 20px; transition:border-color .25s, background .25s;
 }
-.obj-card-cta:hover .btn-cta-w{background:var(--cream);}
+.cta-btn:hover { border-color:var(--white); background:rgba(255,255,255,.08); }
+.cta-btn::after { content:'→'; }
 
-/* ===================== USP ===================== */
-#usp{background:var(--navy);padding:72px 5%;}
-.usp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
-.usp-item{text-align:center;}
-.usp-icon{
-  width:54px;height:54px;background:rgba(255,255,255,.08);border-radius:14px;
-  display:flex;align-items:center;justify-content:center;font-size:1.5rem;
-  margin:0 auto 16px;
+/* =============================================
+   USP-STREIFEN – navy mit Gold-Akzenten
+   ============================================= */
+#usp {
+  background:var(--navy-xl);
+  padding:72px 5%;
+  position:relative; overflow:hidden;
 }
-.usp-t{
+#usp::before {
+  content:''; position:absolute; top:0; left:0; right:0;
+  height:1px; background:linear-gradient(to right, transparent, var(--gold), transparent);
+}
+.usp-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
+.usp-item {
+  padding:0 48px 0 0;
+  border-right:1px solid rgba(255,255,255,.07);
+  padding-right:48px;
+}
+.usp-item:first-child { padding-left:0; }
+.usp-item:last-child { border-right:none; padding-right:0; padding-left:48px; }
+.usp-item:nth-child(2) { padding-left:48px; }
+.usp-ico {
+  width:44px; height:44px;
+  border:1px solid rgba(184,155,106,.3);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; margin-bottom:20px;
+}
+.usp-t {
   font-family:'Cormorant Garamond',serif;
-  font-size:1.2rem;font-weight:400;color:var(--white);margin-bottom:8px;
+  font-size:1.3rem; font-weight:400; color:var(--white);
+  margin-bottom:10px;
 }
-.usp-p{font-size:.83rem;font-weight:300;line-height:1.72;color:rgba(255,255,255,.52);}
+.usp-p {
+  font-size:.82rem; font-weight:300; line-height:1.8;
+  color:rgba(255,255,255,.45); letter-spacing:.02em;
+}
 
-/* ===================== FOOTER ===================== */
-footer{background:var(--cream);padding:56px 5% 28px;}
-.footer-grid{
-  display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;
-  gap:44px;margin-bottom:44px;
+/* =============================================
+   ÜBER UNS – Teaser
+   ============================================= */
+#about-teaser {
+  background:var(--cream);
+  padding:0;
+  display:grid; grid-template-columns:1fr 1fr;
+  min-height:540px;
 }
-.f-logo{
-  height:44px;width:130px;background:var(--sage-ll);
-  border:1.5px dashed var(--sage);border-radius:6px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:.52rem;font-weight:600;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--sage);margin-bottom:14px;
+.at-photo {
+  position:relative; overflow:hidden; background:var(--sage-ll);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
 }
-.f-logo img{height:100%;width:100%;object-fit:contain;border-radius:5px;}
-.f-slogan{
+.at-photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; }
+.at-photo-ph { font-size:5rem; opacity:.12; z-index:1; }
+.at-photo-txt { font-size:.6rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--text-d); z-index:1; margin-top:10px; }
+/* Gold Balken rechts */
+.at-photo::after {
+  content:''; position:absolute; top:10%; bottom:10%; right:0;
+  width:3px; background:var(--gold); opacity:.5;
+}
+.at-text {
+  padding:72px 8%;
+  display:flex; flex-direction:column; justify-content:center;
+}
+.at-text .sec-eyebrow { margin-bottom:14px; }
+.at-text .sec-title { margin-bottom:18px; }
+.at-body {
+  font-size:.9rem; font-weight:300; line-height:1.88; letter-spacing:.02em;
+  color:var(--text-m); margin-bottom:16px;
+}
+.at-body strong { color:var(--navy); font-weight:500; }
+.at-signature {
   font-family:'Cormorant Garamond',serif;
-  font-size:.9rem;font-style:italic;color:var(--text-m);margin-bottom:14px;line-height:1.5;
+  font-size:1.6rem; font-weight:300; font-style:italic;
+  color:var(--sage); margin-top:24px; margin-bottom:4px;
 }
-.f-contact{font-size:.8rem;color:var(--text-m);line-height:1.9;}
-.f-contact a:hover{color:var(--navy);}
-.f-col-title{
-  font-size:.64rem;font-weight:600;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--text-d);margin-bottom:16px;
-}
-.f-col a{
-  display:block;font-size:.8rem;color:var(--text-m);margin-bottom:9px;transition:color .2s;
-}
-.f-col a:hover{color:var(--navy);}
-.f-social{display:flex;gap:10px;margin-top:4px;}
-.f-soc{
-  width:36px;height:36px;border-radius:50%;background:var(--sage-ll);
-  display:flex;align-items:center;justify-content:center;
-  font-size:.82rem;font-weight:700;color:var(--navy);transition:background .2s;
-}
-.f-soc:hover{background:var(--sage-l);}
-.footer-bottom{
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:12px;
-  padding-top:22px;border-top:1px solid var(--sage-ll);
-  font-size:.74rem;color:var(--text-d);
-}
-.footer-bottom a{color:var(--text-d);transition:color .2s;}
-.footer-bottom a:hover{color:var(--navy);}
+.at-sig-title { font-size:.65rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--text-d); }
 
-/* ===================== RESPONSIVE ===================== */
-@media(max-width:1024px){
-  .search-box{grid-template-columns:1fr 1fr;}
-  .sf-btn{grid-column:1/3;width:100%;}
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  background:var(--navy-xl);
+  padding:64px 5% 28px;
+  position:relative;
 }
-@media(max-width:900px){
-  .nav-links,.nav-right{display:none;}
-  .nav-mob{display:flex;}
-  .kat-grid{grid-template-columns:1fr;}
-  .usp-grid{grid-template-columns:1fr;gap:28px;}
-  .footer-grid{grid-template-columns:1fr 1fr;}
+footer::before {
+  content:''; position:absolute; top:0; left:5%; right:5%;
+  height:1px; background:linear-gradient(to right, transparent, rgba(143,168,154,.3), transparent);
 }
-@media(max-width:640px){
-  section{padding:64px 4%;}
-  #kategorien{padding-top:148px;}
-  .hero-search{padding:0 4%;}
-  .search-box{grid-template-columns:1fr;padding:18px;gap:12px;}
-  .sf-btn{grid-column:auto;width:100%;}
-  .obj-grid{grid-template-columns:1fr;}
-  .footer-grid{grid-template-columns:1fr;}
-  .footer-bottom{flex-direction:column;text-align:center;}
-  .hero-h1{font-size:clamp(2.2rem,8vw,3.5rem);}
+.footer-grid {
+  display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:48px; margin-bottom:52px;
+}
+.f-logo {
+  height:42px; width:130px; background:rgba(255,255,255,.06);
+  border:1px dashed rgba(143,168,154,.3); border-radius:3px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.5rem; font-weight:500; letter-spacing:.18em;
+  text-transform:uppercase; color:rgba(143,168,154,.5); margin-bottom:18px;
+}
+.f-logo img { height:100%; width:100%; object-fit:contain; border-radius:2px; }
+.f-slogan {
+  font-family:'Cormorant Garamond',serif;
+  font-size:.95rem; font-style:italic; color:rgba(255,255,255,.45);
+  margin-bottom:16px; line-height:1.6;
+}
+.f-contact { font-size:.78rem; font-weight:300; color:rgba(255,255,255,.4); line-height:2; }
+.f-contact a { transition:color .2s; }
+.f-contact a:hover { color:var(--sage-l); }
+.f-col-title {
+  font-size:.58rem; font-weight:500; letter-spacing:.2em;
+  text-transform:uppercase; color:rgba(255,255,255,.28); margin-bottom:18px;
+}
+.f-col a {
+  display:block; font-size:.78rem; font-weight:300;
+  color:rgba(255,255,255,.45); margin-bottom:10px; transition:color .2s;
+}
+.f-col a:hover { color:var(--sage-l); }
+.f-social { display:flex; gap:10px; margin-top:6px; }
+.f-soc {
+  width:34px; height:34px; border:1px solid rgba(255,255,255,.15);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.75rem; font-weight:600; color:rgba(255,255,255,.45); transition:all .2s;
+}
+.f-soc:hover { border-color:var(--sage-l); color:var(--sage-l); }
+.footer-bottom {
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:12px;
+  padding-top:24px; border-top:1px solid rgba(255,255,255,.06);
+  font-size:.68rem; font-weight:300; color:rgba(255,255,255,.25); letter-spacing:.04em;
+}
+.footer-bottom a { color:rgba(255,255,255,.25); transition:color .2s; }
+.footer-bottom a:hover { color:rgba(255,255,255,.6); }
+
+/* =============================================
+   REVEAL ANIMATIONS
+   ============================================= */
+.r   { opacity:0; transform:translateY(24px); transition:opacity .75s ease, transform .75s ease; }
+.r-l { opacity:0; transform:translateX(-24px); transition:opacity .75s ease, transform .75s ease; }
+.r-r { opacity:0; transform:translateX(24px);  transition:opacity .75s ease, transform .75s ease; }
+.r-s { opacity:0; transform:scale(.97);        transition:opacity .7s ease,  transform .7s ease; }
+.r.on, .r-l.on, .r-r.on, .r-s.on { opacity:1; transform:none; }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media(max-width:1200px) {
+  .obj-grid { grid-template-columns:1fr 1fr; }
+  .obj-featured { grid-row:auto; grid-column:1/3; }
+  .of-img-wrap { height:360px; }
+}
+@media(max-width:1024px) {
+  #hero { grid-template-columns:1fr; }
+  .hero-right { display:none; }
+  .hero-left { padding:120px 6% 80px; min-height:100vh; justify-content:center; }
+  .hero-deco-num { font-size:14rem; }
+  .suche-inner { grid-template-columns:1fr 1fr; }
+  .sf-btn-block { grid-column:1/3; }
+  .kat-grid { grid-template-columns:1fr 1fr; }
+  .usp-grid { grid-template-columns:1fr; gap:36px; }
+  .usp-item { border-right:none; padding-left:0 !important; padding-right:0 !important; border-bottom:1px solid rgba(255,255,255,.07); padding-bottom:32px; }
+  .usp-item:last-child { border-bottom:none; padding-bottom:0; }
+  #about-teaser { grid-template-columns:1fr; }
+  .at-photo { height:380px; }
+  .at-photo::after { display:none; }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:768px) {
+  nav { height:60px; }
+  .nav-links, .nav-right { display:none; }
+  .nav-mob { display:flex; }
+  .suche-inner { grid-template-columns:1fr; }
+  .sf-btn-block { grid-column:auto; }
+  .sf-block { padding:18px 20px; }
+  .kat-grid { grid-template-columns:1fr; }
+  .kat-item { aspect-ratio:16/9; }
+  .obj-grid { grid-template-columns:1fr; }
+  .obj-featured { grid-column:auto; }
+  .footer-grid { grid-template-columns:1fr; }
+  .footer-bottom { flex-direction:column; text-align:center; }
+  .hero-h1 { font-size:clamp(2.6rem,9vw,4rem); }
+  .hero-stats { flex-direction:column; gap:16px; }
+  .hstat + .hstat { border-left:none; border-top:1px solid var(--cream-d); padding-left:0; padding-top:16px; }
+}
+@media(max-width:480px) {
+  #hero { min-height:auto; }
+  .hero-left { padding:90px 5% 64px; min-height:auto; }
+  .hero-deco-num { display:none; }
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ============ NAV ============ -->
 <nav id="nav">
-  <a class="nav-logo" href="index.html">Logo einfügen</a>
+  <a class="nav-logo" href="index.html">
+    Logo einfügen
+  </a>
   <ul class="nav-links">
     <li><a href="index.html" class="active">Home</a></li>
     <li><a href="immobilien.html">Immobilien</a></li>
@@ -420,15 +752,15 @@ footer{background:var(--cream);padding:56px 5% 28px;}
   </ul>
   <div class="nav-right">
     <span class="nav-tel">+43 664 2211662</span>
+    <div class="nav-divider"></div>
     <a class="nav-cta" href="kontakt.html">Kontakt</a>
   </div>
-  <button class="nav-mob" id="navMob" aria-label="Menü öffnen">
+  <button class="nav-mob" id="navMob" aria-label="Menü">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu">
+<div class="mob-overlay" id="mobOverlay">
   <a href="index.html">Home</a>
   <a href="immobilien.html">Immobilien</a>
   <a href="projekte.html">Projekte</a>
@@ -437,187 +769,270 @@ footer{background:var(--cream);padding:56px 5% 28px;}
   <a href="kontakt.html">Kontakt</a>
 </div>
 
-<!-- HERO -->
+<!-- ============ HERO ============ -->
 <section id="hero">
-  <div class="hero-bg">
-    <!-- Foto: Hochwertiges Interieur/Immobilie, 1920×1080px. src="dateiname.jpg" einfügen -->
-    <div class="hero-bg-ph-icon">🏡</div>
-    <div class="hero-bg-ph-txt">Hero-Foto einfügen — 1920 × 1080 px</div>
-  </div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <p class="hero-sup">Immobilien zum Wohlfühlen</p>
-    <h1 class="hero-h1">Ihr Zuhause.<br><em>Ihre Heimat.</em><br>Ihre Entscheidung.</h1>
-    <p class="hero-p">KT Fine Living – Ihr verlässlicher Partner für hochwertige Wohnimmobilien in Wien und Wien-Umgebung. Kompetent, persönlich, auf Augenhöhe.</p>
-    <div class="hero-btns">
-      <a href="immobilien.html" class="btn-white">Immobilien entdecken</a>
-      <a href="kontakt.html" class="btn-ghost-w">Kontakt aufnehmen</a>
+
+  <!-- LINKS: Content -->
+  <div class="hero-left">
+    <div class="hero-deco-num">KT</div>
+    <div class="hero-vert-label">Wien &amp; Wien-Umgebung</div>
+
+    <p class="hero-eyebrow">Immobilien zum Wohlfühlen</p>
+    <h1 class="hero-h1">
+      Ihr Zuhause.<br>
+      <em>Ihre Heimat.</em><br>
+      Ihre Entscheidung.
+    </h1>
+    <p class="hero-p">
+      KT Fine Living – Ihr verlässlicher Partner für hochwertige Wohnimmobilien
+      in Wien und Wien-Umgebung. Kompetent, persönlich, auf Augenhöhe.
+    </p>
+    <div class="hero-actions">
+      <a href="immobilien.html" class="btn-primary">Immobilien entdecken</a>
+      <a href="kontakt.html" class="btn-link">Kontakt aufnehmen</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-num">Wien</div>
+        <div class="hstat-lbl">Schwerpunktgebiet</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">100%</div>
+        <div class="hstat-lbl">Persönliche Betreuung</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">15+</div>
+        <div class="hstat-lbl">Jahre Expertise</div>
+      </div>
     </div>
   </div>
-  <div class="hero-search">
-    <div class="search-box">
-      <div class="sf-g">
-        <label class="sf-lbl">Vermarktungsart</label>
-        <select class="sf-sel" id="s-art">
-          <option value="">Alle</option>
-          <option>Miete</option>
-          <option>Kauf</option>
-        </select>
-      </div>
-      <div class="sf-g">
-        <label class="sf-lbl">Objektart</label>
-        <select class="sf-sel" id="s-obj">
-          <option value="">Alle Objektarten</option>
-          <option>Wohnung</option>
-          <option>Haus</option>
-          <option>Grundstück</option>
-          <option>Stellplatz / Garage</option>
-        </select>
-      </div>
-      <div class="sf-g">
-        <label class="sf-lbl">Preisrahmen (max.)</label>
-        <input type="text" class="sf-inp" id="s-preis" placeholder="z.B. 500.000 €">
-      </div>
-      <button class="sf-btn" onclick="window.location.href='immobilien.html'">
-        🔍 &nbsp;Suchen
-      </button>
+
+  <!-- RECHTS: Foto -->
+  <div class="hero-right">
+    <div class="hero-img">
+      <!-- Foto: Hochwertiges Interieur/Immobilie, 960×1080px hochformat -->
+      <div class="hero-img-ph">🏡</div>
+      <div class="hero-img-txt">Hero-Foto einfügen — 960 × 1080 px</div>
+      <div class="hero-img-ov"></div>
+    </div>
+    <!-- Schwebende Info-Karte -->
+    <div class="hero-float-card">
+      <div class="card-label">Aktuelles Objekt</div>
+      <div class="card-value">Wimpassing<br>an der Leitha</div>
+      <div class="card-sub">5 Zimmer · 145 m² · 580.000 €</div>
     </div>
   </div>
+
 </section>
 
-<!-- KATEGORIEN -->
+<!-- ============ SUCHLEISTE ============ -->
+<div id="suche">
+  <div class="suche-inner">
+    <div class="sf-block">
+      <div class="sf-lbl">Vermarktungsart</div>
+      <select class="sf-sel">
+        <option value="">Alle</option>
+        <option>Miete</option>
+        <option>Kauf</option>
+      </select>
+    </div>
+    <div class="sf-block">
+      <div class="sf-lbl">Objektart</div>
+      <select class="sf-sel">
+        <option value="">Alle Objektarten</option>
+        <option>Wohnung</option>
+        <option>Haus</option>
+        <option>Grundstück</option>
+      </select>
+    </div>
+    <div class="sf-block">
+      <div class="sf-lbl">Bundesland</div>
+      <select class="sf-sel">
+        <option value="">Alle Bundesländer</option>
+        <option>Wien</option>
+        <option>Niederösterreich</option>
+        <option>Burgenland</option>
+      </select>
+    </div>
+    <div class="sf-block">
+      <div class="sf-lbl">Preisrahmen (max.)</div>
+      <input type="text" class="sf-inp" placeholder="z.B. 600.000 €">
+    </div>
+    <button class="sf-btn-block" onclick="window.location.href='immobilien.html'">
+      Suchen &nbsp;→
+    </button>
+  </div>
+</div>
+
+<!-- ============ KATEGORIEN ============ -->
 <section id="kategorien">
-  <div class="section-hdr r">
-    <div class="s-sup">Unser Angebot</div>
-    <h2 class="s-title">Was wir <em>für Sie</em> bereithalten</h2>
+  <div class="kat-header r">
+    <div>
+      <p class="sec-eyebrow">Unser Angebot</p>
+      <h2 class="sec-title">Was wir für Sie <em>bereithalten</em></h2>
+    </div>
+    <a href="immobilien.html" style="font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);display:flex;align-items:center;gap:8px;transition:gap .2s;" onmouseover="this.style.gap='14px'" onmouseout="this.style.gap='8px'">
+      Alle ansehen &nbsp;→
+    </a>
   </div>
   <div class="kat-grid">
-    <a href="immobilien.html" class="kat-card r-s">
+    <a href="immobilien.html" class="kat-item r-s">
       <div class="kat-bg">
-        <!-- Foto: Wohnzimmer/Sofa, 800×600px -->
-        <div class="kat-bg-icon">🛋️</div>
-        <div class="kat-bg-ph">Foto einfügen</div>
+        <!-- Foto: Wohnzimmer/Couch, 600×800px -->
+        <div class="kat-bg-ph">🛋️</div>
+        <div class="kat-bg-ph-txt">Foto einfügen — 600×800px</div>
       </div>
       <div class="kat-ov"></div>
-      <div class="kat-info">
+      <div class="kat-content">
+        <div class="kat-num">01</div>
         <div class="kat-name">Miete</div>
         <div class="kat-sub">Aktuelle Mietobjekte</div>
       </div>
+      <div class="kat-arrow">↗</div>
     </a>
-    <a href="immobilien.html" class="kat-card r-s">
+    <a href="immobilien.html" class="kat-item r-s">
       <div class="kat-bg">
-        <!-- Foto: Küche/Haus Außen, 800×600px -->
-        <div class="kat-bg-icon">🏡</div>
-        <div class="kat-bg-ph">Foto einfügen</div>
+        <!-- Foto: Haus Außen/Küche, 600×800px -->
+        <div class="kat-bg-ph">🏡</div>
+        <div class="kat-bg-ph-txt">Foto einfügen — 600×800px</div>
       </div>
       <div class="kat-ov"></div>
-      <div class="kat-info">
+      <div class="kat-content">
+        <div class="kat-num">02</div>
         <div class="kat-name">Kauf</div>
         <div class="kat-sub">Aktuelle Kaufobjekte</div>
       </div>
+      <div class="kat-arrow">↗</div>
     </a>
-    <a href="projekte.html" class="kat-card r-s">
+    <a href="projekte.html" class="kat-item r-s">
       <div class="kat-bg">
-        <!-- Foto: Neubau/Dachgeschoss, 800×600px -->
-        <div class="kat-bg-icon">🏗️</div>
-        <div class="kat-bg-ph">Foto einfügen</div>
+        <!-- Foto: Dachgeschoss/Neubau, 600×800px -->
+        <div class="kat-bg-ph">🏗️</div>
+        <div class="kat-bg-ph-txt">Foto einfügen — 600×800px</div>
       </div>
       <div class="kat-ov"></div>
-      <div class="kat-info">
+      <div class="kat-content">
+        <div class="kat-num">03</div>
         <div class="kat-name">Projekte</div>
         <div class="kat-sub">Neubauprojekte &amp; Dachausbauten</div>
       </div>
+      <div class="kat-arrow">↗</div>
     </a>
   </div>
 </section>
 
-<!-- ZITAT -->
+<!-- ============ ZITAT ============ -->
 <section id="zitat">
   <blockquote class="zitat-q r">„Zuhause ist, wo das Herz eine Heimat findet."</blockquote>
-  <p class="zitat-a r">Zitat: Fred Ammon</p>
+  <p class="zitat-author r">— Fred Ammon</p>
 </section>
 
-<!-- TOP-OBJEKTE -->
+<!-- ============ TOPOBJEKTE ============ -->
 <section id="objekte">
-  <div class="section-hdr-row">
-    <div class="r">
-      <div class="s-sup">Empfehlungen</div>
-      <h2 class="s-title">Unsere <em>Topobjekte</em></h2>
+  <div class="obj-header r">
+    <div>
+      <p class="sec-eyebrow">Empfehlungen</p>
+      <h2 class="sec-title">Unsere <em>Topobjekte</em></h2>
     </div>
-    <a href="immobilien.html" class="link-all r">Alle Immobilien ansehen</a>
+    <a href="immobilien.html" style="font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);display:flex;align-items:center;gap:8px;transition:gap .2s;" onmouseover="this.style.gap='14px'" onmouseout="this.style.gap='8px'">
+      Alle Immobilien &nbsp;→
+    </a>
   </div>
+
   <div class="obj-grid">
 
-    <a href="objekt-wimpassing.html" class="obj-card r-s">
-      <div class="obj-img">
-        <div class="obj-img-inner">
-          <!-- Foto: Einfamilienhaus Wimpassing, 700×460px -->
-          <div class="obj-ph">🏡</div>
+    <!-- HAUPTOBJEKT groß -->
+    <a href="objekt-wimpassing.html" class="obj-featured r-l">
+      <div class="of-img-wrap">
+        <div class="of-img">
+          <!-- Foto: Einfamilienhaus Wimpassing, 800×500px -->
+          <div class="of-img-ph">
+            <div class="of-img-ico">🏡</div>
+            <div class="of-img-txt">Foto einfügen — 800 × 500 px</div>
+          </div>
         </div>
+        <div class="of-badge">Kaufobjekt</div>
       </div>
-      <div class="obj-body">
-        <div class="obj-price">580.000 €</div>
-        <div class="obj-title">Urlaubsfeeling inklusive! Modernes Einfamilienhaus mit Balkon, Terrasse und Garten in Gated Community mit idyllischem Badesee</div>
-        <div class="obj-loc">📍 2485 Wimpassing an der Leitha</div>
-        <div class="obj-facts">
-          <span class="obj-fact">🛏 5 Zi.</span>
-          <span class="obj-fact">📐 ca. 145 m²</span>
-          <span class="obj-fact">🏷 Kauf</span>
-        </div>
-      </div>
-    </a>
-
-    <a href="objekt-wien.html" class="obj-card r-s">
-      <div class="obj-img">
-        <div class="obj-img-inner">
-          <!-- Foto: Altbauwohnung Wien, 700×460px -->
-          <div class="obj-ph">🏠</div>
-        </div>
-        <div class="obj-badge sold">Reserviert</div>
-      </div>
-      <div class="obj-body">
-        <div class="obj-price">699.000 €</div>
-        <div class="obj-title">La vie en rose! Hochwertig revitalisierte 2,5-Zimmer-Altbauwohnung im charmanten Servitenviertel</div>
-        <div class="obj-loc">📍 1090 Wien</div>
-        <div class="obj-facts">
-          <span class="obj-fact">🛏 2,5 Zi.</span>
-          <span class="obj-fact">📐 ca. 70 m²</span>
-          <span class="obj-fact">🏷 Kauf</span>
+      <div class="of-info">
+        <div class="of-price">580.000 €</div>
+        <div class="of-title">Urlaubsfeeling inklusive! Modernes Einfamilienhaus mit Balkon, Terrasse und Garten in Gated Community mit idyllischem Badesee</div>
+        <div class="of-loc">📍 2485 Wimpassing an der Leitha</div>
+        <div class="of-facts">
+          <span class="of-fact">🛏 5 Zimmer</span>
+          <span class="of-fact">📐 ca. 145 m²</span>
+          <span class="of-fact">🏗 Baujahr 2013</span>
         </div>
       </div>
     </a>
 
-    <a href="immobilien.html" class="obj-card obj-card-cta r-s">
-      <div class="obj-cta-title">Alle Objekte<br><em>entdecken</em></div>
-      <div class="obj-cta-sub">Unser vollständiges Portfolio</div>
-      <div class="btn-cta-w">Zum Portfolio →</div>
+    <!-- KLEINES OBJEKT 1 -->
+    <a href="objekt-wien.html" class="obj-card r">
+      <div class="oc-img-wrap">
+        <div class="oc-img">
+          <!-- Foto: Altbauwohnung Wien, 560×380px -->
+          <div class="oc-img-ph">🏠</div>
+        </div>
+        <div class="oc-img-badge">Reserviert</div>
+      </div>
+      <div class="oc-body">
+        <div class="oc-price">699.000 €</div>
+        <div class="oc-title">La vie en rose! Hochwertig revitalisierte 2,5-Zimmer-Altbauwohnung im charmanten Servitenviertel</div>
+        <div class="oc-loc">📍 1090 Wien</div>
+      </div>
+    </a>
+
+    <!-- CTA KARTE -->
+    <a href="immobilien.html" class="obj-cta-card r">
+      <div class="cta-title">Alle Objekte<br><em>entdecken</em></div>
+      <div class="cta-sub">Unser vollständiges Portfolio an hochwertigen Wohnimmobilien</div>
+      <div class="cta-btn">Zum Portfolio</div>
     </a>
 
   </div>
 </section>
 
-<!-- USP -->
+<!-- ============ USP ============ -->
 <section id="usp">
   <div class="usp-grid">
     <div class="usp-item r-s">
-      <div class="usp-icon">🤝</div>
+      <div class="usp-ico">🤝</div>
       <div class="usp-t">Persönliche Betreuung</div>
-      <p class="usp-p">Vom Erstkontakt bis zur Schlüsselübergabe — wir begleiten Sie persönlich durch den gesamten Prozess.</p>
+      <p class="usp-p">Vom Erstkontakt bis zur Schlüsselübergabe — wir begleiten Sie persönlich und auf Augenhöhe durch den gesamten Prozess.</p>
     </div>
     <div class="usp-item r-s">
-      <div class="usp-icon">🏆</div>
+      <div class="usp-ico">🏆</div>
       <div class="usp-t">Expertise &amp; Erfahrung</div>
-      <p class="usp-p">Fundiertes Fachwissen, langjährige Branchenerfahrung und tiefes Verständnis des Wiener Immobilienmarkts.</p>
+      <p class="usp-p">Fundiertes Fachwissen, langjährige Branchenerfahrung und ein tiefes Verständnis des Wiener Immobilienmarkts.</p>
     </div>
     <div class="usp-item r-s">
-      <div class="usp-icon">🔍</div>
+      <div class="usp-ico">🔍</div>
       <div class="usp-t">Maßgeschneiderte Lösungen</div>
       <p class="usp-p">Jede Immobilie ist einzigartig — wir entwickeln individuelle Strategien und finden Ihre Traumimmobilie.</p>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ============ ÜBER UNS TEASER ============ -->
+<section id="about-teaser" style="padding:0;">
+  <div class="at-photo">
+    <!-- Foto: Karina Trebos Porträt, 700×900px -->
+    <div class="at-photo-ph">👩</div>
+    <div class="at-photo-txt">Porträtfoto — 700 × 900 px</div>
+  </div>
+  <div class="at-text r-r">
+    <p class="sec-eyebrow">Über uns</p>
+    <h2 class="sec-title">Immobilien zum <em>Wohlfühlen.</em></h2>
+    <p class="at-body">Ganz nach dem Motto „Geschmäcker sind verschieden", sind auch die Immobilien in unserem Portfolio vielfältig. Der primäre Fokus unserer Tätigkeit liegt auf der Vermarktung von <strong>hochwertigen Wohnimmobilien</strong>, wobei das Spektrum von klassischen Einfamilienhäusern über moderne Dachgeschossausbauten bis hin zu charmanten Altbauten reicht.</p>
+    <p class="at-body">Wir sind in <strong>Wien und Wien-Umgebung</strong> gerne für Sie aktiv. Ob Stadt oder Land — wir erfüllen Ihre Erwartungen.</p>
+    <div class="at-signature">Karina Trebos</div>
+    <div class="at-sig-title">Geschäftsführende Gesellschafterin · KT Fine Living GmbH</div>
+    <div style="margin-top:32px;">
+      <a href="unternehmen.html" class="btn-primary" style="display:inline-flex;">Mehr über uns</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
 <footer>
   <div class="footer-grid">
     <div>
@@ -625,7 +1040,8 @@ footer{background:var(--cream);padding:56px 5% 28px;}
       <p class="f-slogan">Immobilien zum Wohlfühlen</p>
       <div class="f-contact">
         KT Fine Living GmbH<br>
-        Kaiser-Josef-Straße 38–40, 3002 Purkersdorf<br><br>
+        Kaiser-Josef-Straße 38–40<br>
+        3002 Purkersdorf<br><br>
         <a href="tel:+436642211662">+43 664 2211662</a><br>
         <a href="mailto:office@kt-fineliving.at">office@kt-fineliving.at</a>
       </div>
@@ -652,8 +1068,8 @@ footer{background:var(--cream);padding:56px 5% 28px;}
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 KT Fine Living GmbH. Alle Rechte vorbehalten.</span>
-    <div style="display:flex;gap:20px;">
+    <span>© 2025 KT Fine Living GmbH · Alle Rechte vorbehalten</span>
+    <div style="display:flex;gap:24px;">
       <a href="#">Impressum</a>
       <a href="#">Datenschutz</a>
     </div>
@@ -661,27 +1077,31 @@ footer{background:var(--cream);padding:56px 5% 28px;}
 </footer>
 
 <script>
+// Nav
 const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('shadow',scrollY>10));
-const mob=document.getElementById('navMob');
-const menu=document.getElementById('mobileMenu');
-mob.addEventListener('click',()=>{
-  menu.classList.toggle('open');
-  document.body.style.overflow=menu.classList.contains('open')?'hidden':'';
+window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40));
+
+// Mobile Menu
+document.getElementById('navMob').addEventListener('click',()=>{
+  const ov=document.getElementById('mobOverlay');
+  ov.classList.toggle('open');
+  document.body.style.overflow=ov.classList.contains('open')?'hidden':'';
 });
-const els=document.querySelectorAll('.r,.r-l,.r-r,.r-s');
-const obs=new IntersectionObserver(entries=>{
+
+// Reveal on scroll
+const revEls=document.querySelectorAll('.r,.r-l,.r-r,.r-s');
+const revObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       const sibs=[...e.target.parentElement.children]
         .filter(c=>c.classList.contains('r')||c.classList.contains('r-l')||
                    c.classList.contains('r-r')||c.classList.contains('r-s'));
-      setTimeout(()=>e.target.classList.add('on'),sibs.indexOf(e.target)*80);
-      obs.unobserve(e.target);
+      setTimeout(()=>e.target.classList.add('on'),sibs.indexOf(e.target)*90);
+      revObs.unobserve(e.target);
     }
   });
 },{threshold:.08});
-els.forEach(el=>obs.observe(el));
+revEls.forEach(el=>revObs.observe(el));
 </script>
 </body>
 </html>
