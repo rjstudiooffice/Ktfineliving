@@ -579,27 +579,26 @@ footer::before {
 
 /* ── Kleines Desktop / großes Tablet Landscape (≤1200px) ── */
 @media (max-width:1200px) {
-  .hero-h1 { font-size:clamp(2.2rem,3.8vw,4rem); }
+  .hero-h1 { font-size:clamp(1.9rem,2.8vw,3.4rem); }
   .obj-grid { grid-template-columns:1.2fr 1fr 1fr; }
 }
 
 /* ── Tablet Landscape / iPad Pro (≤1024px) ── */
 @media (max-width:1024px) {
-  .hero-l { padding:40px 5% 40px 4%; }
-  .hero-h1 { font-size:clamp(2rem,3.5vw,3.4rem); }
-  .hero-p  { font-size:.82rem; margin-bottom:22px; }
-  .hero-stats { margin-top:24px; padding-top:16px; }
-  .hstat-num { font-size:1.5rem; }
+  .hero-l { padding:16px 5% 16px 4%; }
+  .hero-h1 { font-size:clamp(1.8rem,2.6vw,3rem); }
+  .hero-p  { font-size:.80rem; margin-bottom:12px; }
+  .hero-stats { margin-top:12px; padding-top:12px; }
+  .hstat-num { font-size:1.4rem; }
   .obj-grid { grid-template-columns:1fr 1fr; }
   .obj-feat { grid-row:auto; grid-column:1/3; }
   .feat-img-wrap { height:280px; }
   .usp-grid { gap:32px; }
   .footer-grid { grid-template-columns:1.2fr 1fr 1fr 1fr; gap:32px; }
-  /* Suchleiste: 2x2 Grid auf Tablet */
   .suche-row { flex-wrap:wrap; }
   .sf-cell { min-width:50%; border-bottom:1px solid rgba(255,255,255,.07); }
   .sf-cell:nth-child(2) { border-right:none; }
-  .sf-search { width:100%; justify-content:center; padding:16px; }
+  .sf-search { width:100%; justify-content:center; padding:13px; }
 }
 
 /* ── iPad Portrait / großes Phone Landscape (≤900px) ── */
@@ -613,8 +612,8 @@ footer::before {
   .hero-main { grid-template-columns:1fr; }
   .hero-r { display:none; }
   .hero-l {
-    padding:52px 6% 44px;
-    min-height:calc(100svh - 60px - 60px); /* minus nav minus searchbar */
+    padding:32px 6% 28px;
+    min-height:calc(100svh - 60px - 60px);
     justify-content:center;
   }
   .hero-l-deco { font-size:18rem; opacity:.6; }
@@ -660,7 +659,7 @@ footer::before {
 
 /* ── Smartphone Portrait (≤480px) ── */
 @media (max-width:480px) {
-  .hero-l { padding:44px 5% 36px; }
+  .hero-l { padding:24px 5% 20px; }
   .hero-l-deco { display:none; }
   .hero-h1 { font-size:clamp(2rem,8vw,2.8rem); }
   .hero-actions { flex-direction:column; align-items:flex-start; gap:12px; }
